@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Country = ({ country }) => {
-  console.log(country);
+const Country = ({ country, handleTotalVisit }) => {
+  //   console.log(country);
+
+  const [isVisited, setIsVisited] = useState(false);
+  const handleVisit = () => {
+    setIsVisited(!isVisited);
+    handleTotalVisit(country, isVisited);
+  };
 
   return (
     <div className="border-2 border-green-600 p-3.5 bg-white shadow-lg rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
-      <h2 className="text-xl font-bold text-gray-800">
-        {country.name?.common}
-      </h2>
+      <div className="flex justify-between items-center mb-2">
+        <h2 className="text-xl font-bold text-gray-800">
+          {country.name?.common}
+        </h2>
+
+        <button
+          onClick={handleVisit}
+          className={`px-4  rounded-xl font-semibold  text-white cursor-pointer py-1 ${isVisited ? "bg-green-500" : "bg-amber-600"}`}
+        >
+          {isVisited ? "Visited" : " Not Visited"}
+        </button>
+      </div>
       <img
         className="w-full h-50 object-cover"
         src={country.flags.flags?.svg}
