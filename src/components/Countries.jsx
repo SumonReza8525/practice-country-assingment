@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Country from "./Country";
+import Flags from "./Flags";
 
 const Countries = () => {
   const [totalVisit, setTotalVisit] = useState([]);
@@ -52,7 +53,7 @@ const Countries = () => {
       </ol>
 
       <h2>Total visited Country : {totalVisit.length}</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 p-6 bg-gray-100 w-[90vw] mx-auto border-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 p-6 bg-gray-100 w-[90vw] mx-auto ">
         {countries.map((country) => (
           <Country
             handleTotalVisit={handleTotalVisit}
